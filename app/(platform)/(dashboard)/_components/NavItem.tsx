@@ -7,6 +7,7 @@ import { Activity, CreditCard, Layout, Settings } from 'lucide-react';
 import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export type Organization = {
 	id: string;
@@ -22,7 +23,7 @@ interface NavItemProps {
 	onExpand: (id: string) => void;
 }
 
-export const NavItem: React.FC<NavItemProps> = ({ isActive, isExpanded, organization, onExpand }) => {
+export const NavItem = ({ isActive, isExpanded, organization, onExpand }: NavItemProps) => {
 	const router = useRouter();
 	const pathname = usePathname();
 
@@ -95,5 +96,16 @@ export const NavItem: React.FC<NavItemProps> = ({ isActive, isExpanded, organiza
 				))}
 			</AccordionContent>
 		</AccordionItem>
+	);
+};
+
+NavItem.Skeleton = function SkeletonNavItem() {
+	return (
+		<div className='flex items-center gap-x-2'>
+			<div className='h-10 w-10 relative shrink-0'>
+				<Skeleton className='w-full h-full absolute' />
+			</div>
+			<Skeleton className='h-10 w-full' />
+		</div>
 	);
 };
