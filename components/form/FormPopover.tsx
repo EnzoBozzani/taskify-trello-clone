@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { FormSubmit } from './FormSubmit';
 import { FormInput } from './FormInput';
 import { toast } from 'sonner';
+import { FormPicker } from './FormPicker';
 
 interface FormPopoverProps {
 	children: React.ReactNode;
@@ -32,8 +33,11 @@ export const FormPopover = ({ children, side = 'bottom', align, sideOffset = 0 }
 
 	const onSubmit = (formData: FormData) => {
 		const title = formData.get('title') as string;
+		const image = formData.get('image') as string;
 
-		execute({ title });
+		console.log({ image });
+
+		// execute({ title });
 	};
 
 	return (
@@ -59,6 +63,10 @@ export const FormPopover = ({ children, side = 'bottom', align, sideOffset = 0 }
 					className='space-y-4'
 				>
 					<div className='space-y-4'>
+						<FormPicker
+							id='image'
+							errors={fieldErrors}
+						/>
 						<FormInput
 							id='title'
 							label='Board title:'
