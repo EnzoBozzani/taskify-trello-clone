@@ -1,9 +1,10 @@
 'use client';
 
 import { createBoard } from '@/actions/createBoard';
-import { FormInput } from './FormInput';
-import { FormButton } from './FormButton';
+import { FormInput } from '@/components/form/FormInput';
 import { useAction } from '@/hooks/useAction';
+
+import { FormSubmit } from '@/components/form/FormSubmit';
 
 export const Form = () => {
 	const { execute, fieldErrors } = useAction(createBoard, {
@@ -23,8 +24,12 @@ export const Form = () => {
 
 	return (
 		<form action={onSubmit}>
-			<FormInput errors={fieldErrors} />
-			<FormButton />
+			<FormInput
+				label='Board title:'
+				id='title'
+				errors={fieldErrors}
+			/>
+			<FormSubmit>Save</FormSubmit>
 		</form>
 	);
 };
