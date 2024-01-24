@@ -77,6 +77,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
 							checked={selectedImageId === img.id}
 							disabled={pending}
 							value={`${img.id}|${img.urls.thumb}|${img.urls.full}|${img.links.html}|${img.user.name}`}
+							onChange={() => null}
 						/>
 						<Image
 							fill
