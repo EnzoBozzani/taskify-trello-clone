@@ -50,7 +50,7 @@ const BoardIdLayout = async ({ children, params }: { children: React.ReactNode; 
 				backgroundImage: `url(${board.imageFullUrl})`,
 			}}
 		>
-			<BoardNavbar id={params.boardId} />
+			<BoardNavbar data={board} />
 			<div className='asbolute inset-0 bg-black/10' />
 			<main className='relative pt-28 h-full'>{children}</main>
 		</div>
