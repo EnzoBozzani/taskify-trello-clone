@@ -3,9 +3,11 @@
 import { ElementRef, useRef, useState } from 'react';
 
 import { ListWithCards } from '@/types';
+import { cn } from '@/lib/utils';
 
 import { ListHeader } from './ListHeader';
 import { CardForm } from './CardForm';
+import { CardItem } from './CardItem';
 
 interface ListItemProps {
 	index: number;
@@ -35,6 +37,15 @@ export const ListItem = ({ index, data }: ListItemProps) => {
 					onAddCard={enableEditing}
 					data={data}
 				/>
+				<ol className={cn('mx-1 px-1 py-0.5 flex flex-col gap-y-2', data.cards.length > 0 ? 'mt-2' : 'mt-0')}>
+					{data.cards.map((card, index) => (
+						<CardItem
+							index={index}
+							key={card.id}
+							data={card}
+						/>
+					))}
+				</ol>
 				<CardForm
 					ref={textareaRef}
 					isEditing={isEditing}
