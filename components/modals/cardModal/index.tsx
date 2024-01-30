@@ -15,7 +15,7 @@ export const CardModal = () => {
 	const onClose = useCardModal((state) => state.onClose);
 
 	const { data: cardData } = useQuery<CardWithList>({
-		queryKey: ['card', 'id'],
+		queryKey: ['card', id],
 		queryFn: () => fetcher(`/api/cards/${id}`),
 	});
 
