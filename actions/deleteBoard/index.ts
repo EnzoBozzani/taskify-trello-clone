@@ -8,6 +8,7 @@ import { ENTITY_TYPE, ACTION } from '@prisma/client';
 import { createAuditLog } from '@/lib/createAuditLog';
 import { db } from '@/lib/db';
 import { createSafeAction } from '@/lib/createSafeAction';
+import { decreaseAvailableCount } from '@/lib/orgLimit';
 
 import { InputType, ReturnType } from './types';
 import { DeleteBoard } from './schema';
@@ -31,6 +32,8 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 				orgId,
 			},
 		});
+
+		await decreaseAvailableCount();
 
 		await createAuditLog({
 			entityTitle: board.title,
