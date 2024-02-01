@@ -2,13 +2,14 @@
 
 import { auth } from '@clerk/nextjs';
 import { revalidatePath } from 'next/cache';
+import { ENTITY_TYPE, ACTION } from '@prisma/client';
 
+import { createAuditLog } from '@/lib/createAuditLog';
 import { db } from '@/lib/db';
 import { createSafeAction } from '@/lib/createSafeAction';
 
 import { InputType, ReturnType } from './types';
 import { UpdateCard } from './schema';
-import { values } from 'lodash';
 
 const handler = async (data: InputType): Promise<ReturnType> => {
 	const { userId, orgId } = auth();
@@ -35,6 +36,13 @@ const handler = async (data: InputType): Promise<ReturnType> => {
 			data: {
 				...values,
 			},
+		});
+
+		await createAuditLog({
+			entityTitle: card.title,
+			entityId: card.id,
+			entityType: ENTITY_TYPE.CARD,
+			action: ACTION.UPDATE,
 		});
 	} catch (error) {
 		return {
