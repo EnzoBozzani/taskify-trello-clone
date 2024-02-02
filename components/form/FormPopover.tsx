@@ -3,15 +3,16 @@
 import { X } from 'lucide-react';
 import { ElementRef, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 import { useAction } from '@/hooks/useAction';
 import { createBoard } from '@/actions/createBoard';
 import { Popover, PopoverContent, PopoverTrigger, PopoverClose } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
+import { useProModal } from '@/hooks/useProModal';
 
 import { FormSubmit } from './FormSubmit';
 import { FormInput } from './FormInput';
-import { toast } from 'sonner';
 import { FormPicker } from './FormPicker';
 
 interface FormPopoverProps {
@@ -22,6 +23,7 @@ interface FormPopoverProps {
 }
 
 export const FormPopover = ({ children, side = 'bottom', align, sideOffset = 0 }: FormPopoverProps) => {
+	const proModal = useProModal();
 	const router = useRouter();
 	const closeRef = useRef<ElementRef<'button'>>(null);
 
@@ -32,8 +34,8 @@ export const FormPopover = ({ children, side = 'bottom', align, sideOffset = 0 }
 			router.push(`/board/${data.id}`);
 		},
 		onError: (error) => {
-			console.log({ error });
 			toast.error(error);
+			proModal.onOpen();
 		},
 	});
 
