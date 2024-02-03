@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Taskify - Trello Clone</h1>
 
-## Getting Started
+> Project Status: Finished (February 3, 2024)
 
-First, run the development server:
+### Topics
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+:small_blue_diamond: [Project Description](#project-description)
+
+:small_blue_diamond: [Features](#features)
+
+:small_blue_diamond: [Dependencies](#dependencies)
+
+:small_blue_diamond: [Run App](#run-application)
+
+## Project Description
+
+<p align="justify">
+  Taskify is a fullstack Trello clone, powered by Next.js 14, React, Prisma, Stripe, Tailwind, and MySQL. Streamline project management with an intuitive interface and robust features.
+</p>
+
+## Features
+
+:heavy_check_mark: Login and register, create, edit and delete organizations, boards, lists and cards. Manage all tasks. Upgrade to Pro to have unlimited boards (billing integration using Stripe).
+
+## Dependencies
+
+:warning: Node
+<br>
+:warning: TypeScript
+<br>
+:warning: NextJS
+<br>
+:warning: ReactJS
+<br>
+:warning: Tailwind
+
+PROJECT IS AVAILABLE: [https://taskify-enzobozzani.vercel.app](https://taskify-enzobozzani.vercel.app)
+
+## Run application:
+
+Clone project:
+
+```
+git clone https://github.com/EnzoBozzani/taskify-trello-clone.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Setup environment variables (database, stripe, clerk, app url)
 
-## Learn More
+Run project:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm run dev
+```
